@@ -1,6 +1,6 @@
 # PupPackScreenTweaker
 
-**To all PuP-Pack creators:** here is a little tool to help you visually positioning your PuP screens.
+**To all PuP-Pack creators:** here is a little tool to help you visually position your PuP screens.
 
 - Get a real size preview of what your PuP-Pack layout will look like when playing.
 - Precisely adjust size and position of the PuP screens, and tweak their aspect ratio.
