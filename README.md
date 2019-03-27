@@ -11,7 +11,7 @@
 
 ## Installation
 
-1. Download PupPackScreenTweaker.zip
+1. Download the [latest release](https://github.com/matd11/PupPackScreenTweaker/releases/tag/v1.0)
 2. Place the PupPackScreenTweaker.exe file in your PinUpSystem folder, easy!
 
 ## Getting started
