@@ -63,10 +63,15 @@ namespace PupPackScreenTweaker
             try
             {
                 bool done = false;
+                bool takesnapshot = true;
                 mediaPlayer.PositionChanged += (sender, e) =>
                 {
-                    mediaPlayer.TakeSnapshot(file2);
-                    done = true;
+                    if (takesnapshot)
+                    {
+                        takesnapshot = false; // avoid re-entry
+                        mediaPlayer.TakeSnapshot(file2);
+                        done = true;
+                    }
                 };
                 mediaPlayer.SetMedia(file);
                 mediaPlayer.Play();
@@ -75,11 +80,14 @@ namespace PupPackScreenTweaker
                 {
                     if ((DateTime.UtcNow - start).TotalMilliseconds >= 3000) throw (new Exception("Error when starting video!"));
                 }
+                mediaPlayer.Dispose();
             }
             catch (Exception exc)
             {
+                mediaPlayer.Dispose();
                 throw (new Exception("VLC library error:" + exc.Message));
             }
+
             if (File.Exists(file2.FullName))
             {
                 Bitmap pic = new Bitmap(file2.FullName);
