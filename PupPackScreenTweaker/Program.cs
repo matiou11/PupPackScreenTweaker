@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace CustomPos
+namespace PupPackScreenTweaker
 {
     static class Program
     {

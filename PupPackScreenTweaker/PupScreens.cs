@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CustomPos
+namespace PupPackScreenTweaker
 {
     public class PupScreens : List<PupScreen>
     {

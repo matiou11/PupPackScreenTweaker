@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace CustomPos
+namespace PupPackScreenTweaker
 {
     public partial class HelpForm : Form
     {
@@ -10,7 +10,7 @@ namespace CustomPos
             InitializeComponent();
             string help = "";
             help += PupTools.GetSoftwareName(true) + Environment.NewLine;
-            help += "an accessory software for PuP Pack screen tweaking." + Environment.NewLine;
+            help += "accessory software for PuP-Pack screen tweaking" + Environment.NewLine + Environment.NewLine;
             help += "Mat D. 03/2019" + Environment.NewLine;
             help += Environment.NewLine;
             help += "https://github.com/matd11/PupPackScreenTweaker";

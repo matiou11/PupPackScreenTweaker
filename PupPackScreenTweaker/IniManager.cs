@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace CustomPos
+namespace PupPackScreenTweaker
 {
     /// <summary>
     /// Manage Ini files

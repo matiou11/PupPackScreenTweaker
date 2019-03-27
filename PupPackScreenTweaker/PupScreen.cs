@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace CustomPos
+namespace PupPackScreenTweaker
 {
     public class PupScreen //: INotifyPropertyChanged
     {

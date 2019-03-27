@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace CustomPos
+namespace PupPackScreenTweaker
 {
     public partial class MainForm : Form
     {
@@ -487,7 +487,7 @@ namespace CustomPos
             string extension = Path.GetExtension(picturePath).ToUpper();
             if (extension == ".MP4")
             {
-                Vid vid = new Vid(picturePath);
+                Video vid = new Video(picturePath);
                 bgPic = vid.GetFrame(vid.Duration / 2);
                 source = MatDWindow.PictureSource.video;
                 defaultPicFileName = Path.GetFileNameWithoutExtension(picturePath) + "-snapshot.png";

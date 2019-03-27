@@ -79,6 +79,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="B2s.cs" />
     <Compile Include="B2sForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +111,7 @@
     <Compile Include="PupScreen.cs" />
     <Compile Include="PupScreens.cs" />
     <Compile Include="PupTools.cs" />
+    <Compile Include="Video.cs" />
     <Compile Include="VideoTools.cs" />
     <EmbeddedResource Include="B2sForm.resx">
       <DependentUpon>B2sForm.cs</DependentUpon>

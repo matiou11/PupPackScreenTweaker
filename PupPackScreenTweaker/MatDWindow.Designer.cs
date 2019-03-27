@@ -1,4 +1,4 @@
-﻿namespace CustomPos
+﻿namespace PupPackScreenTweaker
 {
     partial class MatDWindow
     {
