@@ -257,6 +257,9 @@
             // 
             // grpScreenProp
             // 
+            this.grpScreenProp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grpScreenProp.Controls.Add(this.btnExportRes);
             this.grpScreenProp.Controls.Add(this.btnSavePic);
             this.grpScreenProp.Controls.Add(this.btnCenterY);
@@ -751,7 +754,7 @@
             this.Controls.Add(this.btnSavePupScreens);
             this.Controls.Add(this.lblPupScreens);
             this.Controls.Add(this.grpScreenProp);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MinimumSize = new System.Drawing.Size(533, 537);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "PupPackScreenTweaker 1.0";

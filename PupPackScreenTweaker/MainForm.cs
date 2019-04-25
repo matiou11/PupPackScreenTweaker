@@ -125,6 +125,7 @@ namespace PupPackScreenTweaker
             try
             { 
                 refScreens = PupTools.GetPupScreenFromIniFile(iniFile, useTransparentPupFrames);
+                refScreens.Add(PupScreens.CreateSpecial99Screen()); // add the virtual "99" screen, used for a screen to refer to itself
                 cboRefScreen.Items.Add("");
                 foreach (PupScreen ps in refScreens) cboRefScreen.Items.Add(ps.ScreenIndex.ToString());
             }
@@ -597,7 +598,18 @@ namespace PupPackScreenTweaker
 
         private void cboRefScreen_SelectedIndexChanged(object sender, EventArgs e)
         {
-            updatedCustomPosUI();
+            if (selectedPupScreen != null)
+            {
+                // cannot pick ref 99 for screens with index > 10
+                if (cboRefScreen.Text == PupScreens.SPECIAL_99_SCREENINDEX.ToString() && selectedPupScreen.ScreenIndex > PupScreens.FIRST_USER_SCREENINDEX - 1)
+                {
+                    cboRefScreen.Text = selectedPupScreen.HasCustomPos ? selectedPupScreen.GetRefScreenIndex().ToString() : "";
+                }
+                else
+                {
+                    updatedCustomPosUI();
+                }
+            }
         }
 
         private void btnResetScreen_Click(object sender, EventArgs e)
@@ -632,8 +644,11 @@ namespace PupPackScreenTweaker
             string info = "";
             foreach (PupScreen p in refScreens)
             {
-                string name = PupScreen.refScreenNames[p.ScreenIndex];
-                info += "Ref Screen #" + p.ScreenIndex + " (" + name + "):" + Environment.NewLine + "{ x=" + p.X + ", y=" + p.Y + ", width=" + p.W + ", height=" + p.H + " }" + Environment.NewLine + Environment.NewLine;
+                if (p.ScreenIndex != PupScreens.SPECIAL_99_SCREENINDEX) // we skip the special 99, which is use for a screen to refer to itself and so has no defined dimensions
+                {
+                    string name = PupScreen.refScreenNames[p.ScreenIndex];
+                    info += "Ref Screen #" + p.ScreenIndex + " (" + name + "):" + Environment.NewLine + "{ x=" + p.X + ", y=" + p.Y + ", width=" + p.W + ", height=" + p.H + " }" + Environment.NewLine + Environment.NewLine;
+                }
             }
             MessageBox.Show(this,info, "Pup Reference Screens Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

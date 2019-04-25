@@ -96,7 +96,9 @@ namespace PupPackScreenTweaker
 
         private PupScreen refScreen()
         {
-            foreach (PupScreen pupScreen in refScreens) if (pupScreen.ScreenIndex == refScreenIndex) return pupScreen;
+            // if ref screen is 99, returns the ref screen with index of current screen
+            int indexToFind = refScreenIndex == PupScreens.SPECIAL_99_SCREENINDEX ? this.ScreenIndex : refScreenIndex;
+            foreach (PupScreen pupScreen in refScreens) if (pupScreen.ScreenIndex == indexToFind) return pupScreen;
             return null;
         }
 
@@ -158,7 +160,8 @@ namespace PupPackScreenTweaker
                     CustPosY = 0;
                     CustPosW = 100;
                     CustPosH = 100;
-                    refScreenIndex = ScreenIndex;
+                    // default ref screen is itself... if "user screen" default is 2
+                    refScreenIndex = ScreenIndex < PupScreens.FIRST_USER_SCREENINDEX ? ScreenIndex: PupScreens.BACKGLASS_SCREENINDEX;
                     HasCustomPos = false;
                 }
             }

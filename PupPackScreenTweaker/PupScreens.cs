@@ -6,9 +6,11 @@ namespace PupPackScreenTweaker
     {
         public const int FIRST_USER_SCREENINDEX = 11;
         public const int MAX_ALLOWED_SCREENINDEX = 19;
+        public const int SPECIAL_99_SCREENINDEX = 99;
         public const int BACKGLASS_SCREENINDEX = 2;
         public const string DEFAULT_ACTIVE_MODE = "show";
         public const string DEFAULT_SCREEN_CAPTION = "PUP SCREEN #";
+
         public PupScreens():base()
         {
         
@@ -45,6 +47,13 @@ namespace PupPackScreenTweaker
             ps.Window.Visible = true;
             this.Add(ps);
             return ps;
+        }
+
+        public static PupScreen CreateSpecial99Screen()
+        {
+            PupScreen screen99 = new PupScreen(true, null, null);
+            screen99.ScreenIndex = SPECIAL_99_SCREENINDEX;
+            return screen99;
         }
 
         public void RemoveOne(int screenIndex)
