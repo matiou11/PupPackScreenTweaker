@@ -324,6 +324,7 @@ namespace PupPackScreenTweaker
             {
                 if (grpScreenProp.Enabled == false) grpScreenProp.Enabled = true;
                 selectedPupScreen.HasCustomPos = cboRefScreen.Text != "";
+                selectedPupScreen.InvalidScreenReference = null; // reset "invalid" flag
                 if (selectedPupScreen.HasCustomPos)
                 {
                     selectedPupScreen.SetRefScreen(Convert.ToInt16(cboRefScreen.Text));
@@ -341,6 +342,7 @@ namespace PupPackScreenTweaker
                     txtCustH.Text = "";
                 }
                 selectedPupScreen.CalculateRealPos();
+                lblWarningScreenRef.Visible = selectedPupScreen.InvalidScreenReference != null && selectedPupScreen.HasCustomPos;
                 selectedPupScreen.Window.ForceRepaint();
                 updateScreenPropertiesFields();
             }
@@ -636,7 +638,9 @@ namespace PupPackScreenTweaker
                 else if (cboRefScreen.Text == PupScreens.OTHER_SCREENINDEX)
                 {
                     int newRef = -1;
-                    InputBox("Ref Screen", "Enter your \"other\" reference screen number", ref newRef);
+                    List<string> existingScreens = new List<string>();
+                    foreach (string item in cboRefScreen.Items) existingScreens.Add(item);
+                    newRef = GetNewScreenRef(existingScreens, PupScreens.MAX_SCREENINDEX);
                     if (newRef == -1)
                     {
                         cboRefScreen.Text = selectedPupScreen.HasCustomPos ? selectedPupScreen.GetRefScreenIndex().ToString() : "";
@@ -1032,54 +1036,12 @@ namespace PupPackScreenTweaker
             }
         }
 
-        public static DialogResult InputBox(string title, string promptText, ref int value)
+        public static int GetNewScreenRef(List<string> existingRefScreens, int maxItems)
         {
-            Form form = new Form();
-            Label label = new Label();
-            TextBox textBox = new TextBox();
-            Button buttonOk = new Button();
-            Button buttonCancel = new Button();
-
-            form.Text = title;
-            label.Text = promptText;
-            textBox.Text = "";
-
-            buttonOk.Text = "OK";
-            buttonCancel.Text = "Cancel";
-            buttonOk.DialogResult = DialogResult.OK;
-            buttonCancel.DialogResult = DialogResult.Cancel;
-
-            label.SetBounds(9, 20, 372, 13);
-            textBox.SetBounds(12, 36, 372, 20);
-            buttonOk.SetBounds(228, 72, 75, 23);
-            buttonCancel.SetBounds(309, 72, 75, 23);
-
-            label.AutoSize = true;
-            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
-            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-
-            form.ClientSize = new Size(396, 107);
-            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
-            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
-            form.FormBorderStyle = FormBorderStyle.FixedDialog;
-            form.StartPosition = FormStartPosition.CenterScreen;
-            form.MinimizeBox = false;
-            form.MaximizeBox = false;
-            form.AcceptButton = buttonOk;
-            form.CancelButton = buttonCancel;
+            ScreenRefInputBox form = new ScreenRefInputBox(existingRefScreens, maxItems);
             form.TopMost = true;
-
             DialogResult dialogResult = form.ShowDialog();
-            if (int.TryParse(textBox.Text, out value))
-            {
-                value = Math.Abs(value);
-            }
-            else
-            {
-                value = -1;
-            }
-            return dialogResult;
+            return form.SelectedRef;
         }
     }
 }

@@ -111,6 +111,12 @@
     <Compile Include="PupScreen.cs" />
     <Compile Include="PupScreens.cs" />
     <Compile Include="PupTools.cs" />
+    <Compile Include="ScreenRefInputBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScreenRefInputBox.Designer.cs">
+      <DependentUpon>ScreenRefInputBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Video.cs" />
     <Compile Include="VideoTools.cs" />
     <EmbeddedResource Include="B2sForm.resx">
@@ -135,6 +141,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScreenRefInputBox.resx">
+      <DependentUpon>ScreenRefInputBox.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

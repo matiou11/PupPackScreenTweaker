@@ -1,7 +1,0 @@
-ScreenNum,ScreenDes,PlayList,PlayFile,Loopit,Active,Priority,CustomPos
-16,Backglass-Underlay,"Backglass - Underlay","Underlay - Water Surface Calm.mp4",0,ForceBack,,"101,0,0,100,100"
-18,Topper-Under-Middle,"Topper - Background",,0,ForceOn,,"120,0,0,100,100"
-11,Backglass,"Backglass - Background",,0,ForceBack,,"101,11,0,78,78"
-12,TEXT-Backglass,"TEXT - Background",,0,ForceBack,,"101,26.5,78,48,22"
-17,OverlayFrame,PuPOverlays,OverlayFrame.png,0,ForceOn,,"101,0,0,100,100"
-15,"SSF Sounds",,,0,MusicOnly,,

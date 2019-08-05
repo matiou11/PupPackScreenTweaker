@@ -86,6 +86,7 @@
             this.btnDelGrid = new System.Windows.Forms.Button();
             this.lblPupScreens = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblWarningScreenRef = new System.Windows.Forms.Label();
             this.grpScreenProp.SuspendLayout();
             this.pnlGoodAR.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -257,8 +258,7 @@
             // 
             // grpScreenProp
             // 
-            this.grpScreenProp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpScreenProp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.grpScreenProp.Controls.Add(this.btnExportRes);
             this.grpScreenProp.Controls.Add(this.btnSavePic);
             this.grpScreenProp.Controls.Add(this.btnCenterY);
@@ -303,10 +303,11 @@
             this.grpScreenProp.Controls.Add(this.btnXm);
             this.grpScreenProp.Controls.Add(this.btnYm);
             this.grpScreenProp.Controls.Add(this.label20);
+            this.grpScreenProp.Controls.Add(this.lblWarningScreenRef);
             this.grpScreenProp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpScreenProp.Location = new System.Drawing.Point(12, 308);
             this.grpScreenProp.Name = "grpScreenProp";
-            this.grpScreenProp.Size = new System.Drawing.Size(494, 182);
+            this.grpScreenProp.Size = new System.Drawing.Size(495, 182);
             this.grpScreenProp.TabIndex = 2;
             this.grpScreenProp.TabStop = false;
             this.grpScreenProp.Text = "Properties of selected PuP screen";
@@ -314,7 +315,7 @@
             // btnExportRes
             // 
             this.btnExportRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportRes.Location = new System.Drawing.Point(402, 116);
+            this.btnExportRes.Location = new System.Drawing.Point(409, 116);
             this.btnExportRes.Name = "btnExportRes";
             this.btnExportRes.Size = new System.Drawing.Size(75, 25);
             this.btnExportRes.TabIndex = 19;
@@ -327,7 +328,7 @@
             // btnSavePic
             // 
             this.btnSavePic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePic.Location = new System.Drawing.Point(402, 88);
+            this.btnSavePic.Location = new System.Drawing.Point(409, 88);
             this.btnSavePic.Name = "btnSavePic";
             this.btnSavePic.Size = new System.Drawing.Size(75, 25);
             this.btnSavePic.TabIndex = 18;
@@ -363,7 +364,7 @@
             // btnRefInfo
             // 
             this.btnRefInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefInfo.Location = new System.Drawing.Point(294, 22);
+            this.btnRefInfo.Location = new System.Drawing.Point(299, 22);
             this.btnRefInfo.Name = "btnRefInfo";
             this.btnRefInfo.Size = new System.Drawing.Size(15, 21);
             this.btnRefInfo.TabIndex = 69;
@@ -376,7 +377,7 @@
             // btnResetScreen
             // 
             this.btnResetScreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetScreen.Location = new System.Drawing.Point(321, 51);
+            this.btnResetScreen.Location = new System.Drawing.Point(328, 51);
             this.btnResetScreen.Name = "btnResetScreen";
             this.btnResetScreen.Size = new System.Drawing.Size(156, 27);
             this.btnResetScreen.TabIndex = 15;
@@ -389,7 +390,7 @@
             // btnClearPicture
             // 
             this.btnClearPicture.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClearPicture.Location = new System.Drawing.Point(321, 116);
+            this.btnClearPicture.Location = new System.Drawing.Point(328, 116);
             this.btnClearPicture.Name = "btnClearPicture";
             this.btnClearPicture.Size = new System.Drawing.Size(75, 25);
             this.btnClearPicture.TabIndex = 17;
@@ -401,7 +402,7 @@
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(321, 144);
+            this.button3.Location = new System.Drawing.Point(328, 144);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(156, 25);
             this.button3.TabIndex = 20;
@@ -413,7 +414,7 @@
             // btnLoadPic
             // 
             this.btnLoadPic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadPic.Location = new System.Drawing.Point(321, 88);
+            this.btnLoadPic.Location = new System.Drawing.Point(328, 88);
             this.btnLoadPic.Name = "btnLoadPic";
             this.btnLoadPic.Size = new System.Drawing.Size(75, 25);
             this.btnLoadPic.TabIndex = 16;
@@ -456,7 +457,7 @@
             // btnShowHide
             // 
             this.btnShowHide.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowHide.Location = new System.Drawing.Point(321, 21);
+            this.btnShowHide.Location = new System.Drawing.Point(328, 21);
             this.btnShowHide.Name = "btnShowHide";
             this.btnShowHide.Size = new System.Drawing.Size(156, 27);
             this.btnShowHide.TabIndex = 14;
@@ -643,7 +644,7 @@
             // btnLoadPup
             // 
             this.btnLoadPup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoadPup.Location = new System.Drawing.Point(283, 271);
+            this.btnLoadPup.Location = new System.Drawing.Point(282, 271);
             this.btnLoadPup.Name = "btnLoadPup";
             this.btnLoadPup.Size = new System.Drawing.Size(110, 27);
             this.btnLoadPup.TabIndex = 0;
@@ -656,7 +657,7 @@
             // 
             this.btnSavePupScreens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSavePupScreens.Enabled = false;
-            this.btnSavePupScreens.Location = new System.Drawing.Point(396, 271);
+            this.btnSavePupScreens.Location = new System.Drawing.Point(395, 271);
             this.btnSavePupScreens.Name = "btnSavePupScreens";
             this.btnSavePupScreens.Size = new System.Drawing.Size(110, 27);
             this.btnSavePupScreens.TabIndex = 1;
@@ -741,11 +742,22 @@
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(492, 231);
+            this.dataGridView1.Size = new System.Drawing.Size(491, 231);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // lblWarningScreenRef
+            // 
+            this.lblWarningScreenRef.AutoSize = true;
+            this.lblWarningScreenRef.ForeColor = System.Drawing.Color.Red;
+            this.lblWarningScreenRef.Location = new System.Drawing.Point(291, 26);
+            this.lblWarningScreenRef.Name = "lblWarningScreenRef";
+            this.lblWarningScreenRef.Size = new System.Drawing.Size(11, 13);
+            this.lblWarningScreenRef.TabIndex = 72;
+            this.lblWarningScreenRef.Text = "!";
+            this.toolTip1.SetToolTip(this.lblWarningScreenRef, "This screen reference is invalid");
             // 
             // MainForm
             // 
@@ -836,6 +848,7 @@
         private System.Windows.Forms.Button btnCenterX;
         private System.Windows.Forms.Button btnExportRes;
         private System.Windows.Forms.Button btnSavePic;
+        private System.Windows.Forms.Label lblWarningScreenRef;
     }
 }
 
