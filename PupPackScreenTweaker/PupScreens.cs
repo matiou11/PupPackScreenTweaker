@@ -8,6 +8,7 @@ namespace PupPackScreenTweaker
         public const int MAX_ALLOWED_SCREENINDEX = 19;
         public const int SPECIAL_99_SCREENINDEX = 99;
         public const int BACKGLASS_SCREENINDEX = 2;
+        public const string OTHER_SCREENINDEX = "Other";
         public const string DEFAULT_ACTIVE_MODE = "show";
         public const string DEFAULT_SCREEN_CAPTION = "PUP SCREEN #";
 

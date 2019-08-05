@@ -16,6 +16,7 @@ namespace PupPackScreenTweaker
         public bool Loopit { get; set; }
         public string Priority { get; set; }
         public string Active { get; set; }
+        public int? InvalidScreenReference { get; set; }
 
         // the collection of reference screens (never modified)
         List<PupScreen> refScreens;
@@ -72,6 +73,7 @@ namespace PupPackScreenTweaker
             Window.PropertiesChanged += c_WindowChanged;
             this.refScreens = refScreens;
             HasCustomPos = false;
+            InvalidScreenReference = null;
         }
 
         private void c_WindowChanged(object sender, EventArgs e)
@@ -97,9 +99,12 @@ namespace PupPackScreenTweaker
         private PupScreen refScreen()
         {
             // if ref screen is 99, returns the ref screen with index of current screen
-            int indexToFind = refScreenIndex == PupScreens.SPECIAL_99_SCREENINDEX ? this.ScreenIndex : refScreenIndex;
+            int indexToFind = (refScreenIndex == PupScreens.SPECIAL_99_SCREENINDEX) ? this.ScreenIndex : refScreenIndex;
             foreach (PupScreen pupScreen in refScreens) if (pupScreen.ScreenIndex == indexToFind) return pupScreen;
-            return null;
+            // not found ? means invalid screen reference. let's indicate it and default to screen ref 2
+            this.InvalidScreenReference = indexToFind;
+            foreach (PupScreen pupScreen in refScreens) if (pupScreen.ScreenIndex == PupScreens.BACKGLASS_SCREENINDEX) return pupScreen;
+            return null; // should never happen
         }
 
         public void SetRefScreen(int index)
@@ -160,7 +165,7 @@ namespace PupPackScreenTweaker
                     CustPosY = 0;
                     CustPosW = 100;
                     CustPosH = 100;
-                    // default ref screen is itself... if "user screen" default is 2
+                    // default ref screen is itself... if "user screen", then default is 2
                     refScreenIndex = ScreenIndex < PupScreens.FIRST_USER_SCREENINDEX ? ScreenIndex: PupScreens.BACKGLASS_SCREENINDEX;
                     HasCustomPos = false;
                 }

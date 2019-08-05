@@ -257,8 +257,7 @@
             // 
             // grpScreenProp
             // 
-            this.grpScreenProp.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpScreenProp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpScreenProp.Controls.Add(this.btnExportRes);
             this.grpScreenProp.Controls.Add(this.btnSavePic);
@@ -630,6 +629,7 @@
             // 
             // btnHelp
             // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHelp.Location = new System.Drawing.Point(462, 5);
             this.btnHelp.Name = "btnHelp";
             this.btnHelp.Size = new System.Drawing.Size(44, 24);
@@ -642,6 +642,7 @@
             // 
             // btnLoadPup
             // 
+            this.btnLoadPup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoadPup.Location = new System.Drawing.Point(283, 271);
             this.btnLoadPup.Name = "btnLoadPup";
             this.btnLoadPup.Size = new System.Drawing.Size(110, 27);
@@ -653,6 +654,7 @@
             // 
             // btnSavePupScreens
             // 
+            this.btnSavePupScreens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSavePupScreens.Enabled = false;
             this.btnSavePupScreens.Location = new System.Drawing.Point(396, 271);
             this.btnSavePupScreens.Name = "btnSavePupScreens";
@@ -665,6 +667,7 @@
             // 
             // btnUpGrid
             // 
+            this.btnUpGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnUpGrid.Enabled = false;
             this.btnUpGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnUpGrid.Image")));
             this.btnUpGrid.Location = new System.Drawing.Point(12, 272);
@@ -677,6 +680,7 @@
             // 
             // btnDownGrid
             // 
+            this.btnDownGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDownGrid.Enabled = false;
             this.btnDownGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnDownGrid.Image")));
             this.btnDownGrid.Location = new System.Drawing.Point(35, 272);
@@ -689,6 +693,7 @@
             // 
             // btnAddGrid
             // 
+            this.btnAddGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnAddGrid.Image")));
             this.btnAddGrid.Location = new System.Drawing.Point(66, 272);
             this.btnAddGrid.Name = "btnAddGrid";
@@ -700,6 +705,7 @@
             // 
             // btnDelGrid
             // 
+            this.btnDelGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelGrid.Enabled = false;
             this.btnDelGrid.Image = ((System.Drawing.Image)(resources.GetObject("btnDelGrid.Image")));
             this.btnDelGrid.Location = new System.Drawing.Point(89, 272);
@@ -725,6 +731,9 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(14, 34);
             this.dataGridView1.MultiSelect = false;

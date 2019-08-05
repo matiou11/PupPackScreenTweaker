@@ -58,10 +58,11 @@ namespace PupPackScreenTweaker
         /// <param name="transparentByDefault"></param>
         /// <param name="refScreens"></param>
         /// <returns></returns>
-        public static PupScreens GetPupScreensFromPupFile(string fileName, bool transparentByDefault, List<PupScreen> refScreens)
+        public static PupScreens GetPupScreensFromPupFile(string fileName, bool transparentByDefault, List<PupScreen> refScreens, ref string errors)
         {
             string[] lines = System.IO.File.ReadAllLines(fileName);
             int lineIndex = 0;
+            errors = "";
             PupScreens pupScreens = new PupScreens();
             foreach (string line in lines)
             {
@@ -76,12 +77,12 @@ namespace PupPackScreenTweaker
                     }
                     catch
                     {
-                        return null;
+                        errors += "Error in definition of screen line #" + lineIndex + Environment.NewLine;
                     }
                 }
                 lineIndex++;
             }
-            return pupScreens;
+            return errors == "" ? pupScreens : null;
         }
 
         public static PupScreens GetPupScreenFromIniFile(string fileName, bool transparentByDefault)

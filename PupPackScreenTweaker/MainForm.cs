@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -128,6 +129,7 @@ namespace PupPackScreenTweaker
                 refScreens.Add(PupScreens.CreateSpecial99Screen()); // add the virtual "99" screen, used for a screen to refer to itself
                 cboRefScreen.Items.Add("");
                 foreach (PupScreen ps in refScreens) cboRefScreen.Items.Add(ps.ScreenIndex.ToString());
+                cboRefScreen.Items.Add(PupScreens.OTHER_SCREENINDEX);
             }
             catch
             {
@@ -150,13 +152,39 @@ namespace PupPackScreenTweaker
                 screensPupFile = openFileDialog1.FileName;
                 killAllWindows(); // in case it's not the first time a file is loaded
                 dataGridView1.DataSource = null;
-                pupScreens = PupTools.GetPupScreensFromPupFile(screensPupFile, useTransparentPupFrames, refScreens);
+                string errors = "";
+                pupScreens = PupTools.GetPupScreensFromPupFile(screensPupFile, useTransparentPupFrames, refScreens, ref errors);
                 if (pupScreens == null)
                 {
-                    MessageBox.Show(this, "Not a valid screens.pup file", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Not a valid screens.pup file" + Environment.NewLine + errors, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
+                    // add the invalid ref screens to the drop down list
+                    List<int?> invalidScreens = new List<int?>();
+                    foreach (PupScreen screen in pupScreens)
+                    {
+                        if (screen.InvalidScreenReference != null)
+                        {
+                            bool found = false;
+                            foreach (string item in cboRefScreen.Items) if (item == screen.InvalidScreenReference.ToString()) found = true;
+                            if (!found)
+                            {
+                                invalidScreens.Add(screen.InvalidScreenReference);
+                                cboRefScreen.Items.Add(screen.InvalidScreenReference.ToString());
+                            }
+                        }
+                    }
+                    if (invalidScreens.Count != 0)
+                    {
+                        string list = String.Join(", ", invalidScreens.ToArray());
+                        MessageBox.Show(this, 
+                            "Warning: your screens.pup file contains some definitions using unknown references screens (" + list + ")" 
+                            + Environment.NewLine
+                            + "These screens are not defined in your PinUpPlayer.ini file",
+                            "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
                     pupScreenBindingList = new BindingList<PupScreen>(pupScreens);
                     pupScreensSource = new BindingSource(pupScreenBindingList, null);
                     dataGridView1.DataSource = pupScreensSource;
@@ -605,10 +633,21 @@ namespace PupPackScreenTweaker
                 {
                     cboRefScreen.Text = selectedPupScreen.HasCustomPos ? selectedPupScreen.GetRefScreenIndex().ToString() : "";
                 }
-                else
+                else if (cboRefScreen.Text == PupScreens.OTHER_SCREENINDEX)
                 {
-                    updatedCustomPosUI();
+                    int newRef = -1;
+                    InputBox("Ref Screen", "Enter your \"other\" reference screen number", ref newRef);
+                    if (newRef == -1)
+                    {
+                        cboRefScreen.Text = selectedPupScreen.HasCustomPos ? selectedPupScreen.GetRefScreenIndex().ToString() : "";
+                    }
+                    else
+                    {
+                        if (!cboRefScreen.Items.Contains(newRef.ToString())) cboRefScreen.Items.Add(newRef.ToString());
+                    }
+                    cboRefScreen.Text = newRef.ToString();
                 }
+                updatedCustomPosUI();
             }
         }
 
@@ -991,6 +1030,56 @@ namespace PupPackScreenTweaker
                     MessageBox.Show(this, "RES file saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        public static DialogResult InputBox(string title, string promptText, ref int value)
+        {
+            Form form = new Form();
+            Label label = new Label();
+            TextBox textBox = new TextBox();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+
+            form.Text = title;
+            label.Text = promptText;
+            textBox.Text = "";
+
+            buttonOk.Text = "OK";
+            buttonCancel.Text = "Cancel";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(9, 20, 372, 13);
+            textBox.SetBounds(12, 36, 372, 20);
+            buttonOk.SetBounds(228, 72, 75, 23);
+            buttonCancel.SetBounds(309, 72, 75, 23);
+
+            label.AutoSize = true;
+            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 107);
+            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
+            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+            form.CancelButton = buttonCancel;
+            form.TopMost = true;
+
+            DialogResult dialogResult = form.ShowDialog();
+            if (int.TryParse(textBox.Text, out value))
+            {
+                value = Math.Abs(value);
+            }
+            else
+            {
+                value = -1;
+            }
+            return dialogResult;
         }
     }
 }
